@@ -69,7 +69,7 @@ public class DSL {
 	}
 	
 	public List<String> obterValoresCombo(String id) {
-		WebElement element = driver.findElement(By.id("elementosFomr:esportes"));
+		WebElement element = driver.findElement(By.id("elementosForm:esportes"));
 		Select combo = new Select(element);
 		List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
 		List<String> valores = new ArrayList<String>();
@@ -86,12 +86,12 @@ public class DSL {
 		return options.size();
 	}
 	
-	public boolean verificarOpcaoCombo(String id, String opcao) {
+	public boolean verificarOpcaoCombo(String id, String opcao){
 		WebElement element = driver.findElement(By.id(id));
 		Select combo = new Select(element);
-		List<WebElement> options = combo.getAllSelectedOptions();
-		for(WebElement option: options){
-			if(option.getText().equals(opcao)) {
+		List<WebElement> options = combo.getOptions();
+		for(WebElement option: options) {
+			if(option.getText().equals(opcao)){
 				return true;
 			}
 		}
